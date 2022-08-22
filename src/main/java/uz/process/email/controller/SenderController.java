@@ -10,13 +10,14 @@ import java.time.LocalDateTime;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/mail")
+@CrossOrigin(maxAge = 3600000, origins = "/**")
 public class SenderController {
 
     private final EmailService service;
 
     @GetMapping("send/{text}")
     public String sendEmail(@PathVariable String text) {
-        return service.sendSimpleMessage("abdulhay.uralov@yahoo.com", "sending with java, method get", text+ "\n" + LocalDateTime.now().toString());
+        return service.sendSimpleMessage("abdulhay.uralov@yahoo.com", "sending with java, method get", text + "\n" + LocalDateTime.now().toString());
     }
 
     @PostMapping("/send")

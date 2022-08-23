@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.*;
 import uz.process.email.payload.MailPayload;
 import uz.process.email.service.EmailService;
 
-import java.time.LocalDateTime;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/mail")
@@ -17,12 +15,12 @@ public class SenderController {
 
     @GetMapping("send/{text}")
     public String sendEmail(@PathVariable String text) {
-        return service.sendSimpleMessage("abdulhay.uralov@yahoo.com", "sending with java, method get", text + "\n" + LocalDateTime.now().toString());
+        return service.sendSimpleMessage(new MailPayload("No", "Back-end", "test sending with method GET", text));
     }
 
     @PostMapping("/send")
     public String sendToGmail(@RequestBody MailPayload payload) {
         System.out.println(payload);
-        return service.sendSimpleMessage(payload.getGmail(), "sending with java", payload.getText() + "\n" + LocalDateTime.now().toString());
+        return service.sendSimpleMessage(payload);
     }
 }

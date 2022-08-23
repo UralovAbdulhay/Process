@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 public class MailPayload {
 
     String gmail;
+    String name;
+    String subject;
     String text;
 
 }

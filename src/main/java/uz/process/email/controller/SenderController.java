@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/mail")
-@CrossOrigin(maxAge = 3600000, origins = "/**")
+@CrossOrigin(maxAge = 3600000, origins = "*")
 public class SenderController {
 
     private final EmailService service;

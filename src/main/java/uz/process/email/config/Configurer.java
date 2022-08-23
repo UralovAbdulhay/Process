@@ -17,7 +17,7 @@ public class Configurer {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/mail/send")
                         .allowedMethods("POST", "GET")
-                        .allowedOrigins("/**")
+                        .allowedOrigins("*")
                         .allowCredentials(false)
                         .maxAge(3600);
             }

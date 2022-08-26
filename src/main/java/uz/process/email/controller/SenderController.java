@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.*;
 import uz.process.email.payload.MailPayload;
 import uz.process.email.service.EmailService;
 
+import java.time.LocalDateTime;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/mail")
@@ -15,7 +17,14 @@ public class SenderController {
 
     @GetMapping("send/{text}")
     public String sendEmail(@PathVariable String text) {
-        return service.sendSimpleMessage(new MailPayload("No", "Back-end", "test sending with method GET", text));
+        return service.sendSimpleMessage(new MailPayload("No", "Back-end", "test sending with method GET",
+                text + "\n" + LocalDateTime.now().toString()
+        ));
+    }
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello! I'm here!";
     }
 
     @PostMapping("/send")
